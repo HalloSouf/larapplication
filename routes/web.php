@@ -18,11 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/logout', function() {
-//   Auth::logout();
-//   return redirect('/');
-//});
+Auth::routes(['verify' => true]);
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/mijnaccount', [App\Http\Controllers\MyAccountController::class, 'index'])->name('mijnaccount');
