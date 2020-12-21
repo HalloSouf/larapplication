@@ -48,8 +48,15 @@
                                     Mijn account
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/mijnaccount">Profiel</a></li>
-                                    <li><form method="POST" id="logout-form"><a class="dropdown-item" href="#" id="logout-link">Uitloggen</a></form></li>
+                                    <li>
+                                        <a class="dropdown-item" href="/mijnaccount">Profiel</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Uitloggen</a>
+                                    </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                                        @csrf
+                                    </form>
                                 </ul>
                             </li>
                         @endif
