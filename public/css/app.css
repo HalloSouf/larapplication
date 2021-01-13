@@ -9,9 +9,11 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    height: 100%;
     background: var(--co-background) !important;
 }
 
+/* Navbar */
 .navbar {
     background: var(--co-white);
 }
@@ -33,12 +35,12 @@ body {
     color: #627e85;
 }
 
-.c-form-header {
-    margin-top: 50px;
+.dropdown-item {
+    color: var(--co-text) !important;
 }
 
-.card {
-    width: 600px;
+.c-form-header {
+    margin-top: 50px;
 }
 
 .c-form-card {
@@ -55,11 +57,53 @@ body {
     color: var(--co-text);
 }
 
+/* Cards */
+.card {
+    border-radius: 12px !important;
+}
+
+/* Header */
+.c-header {
+    height: 91vh;
+    min-height: 500px;
+    background-color: var(--co-background);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.c-header-title {
+    animation: LandingText 2s ease-in-out;
+}
+
+.c-header-description {
+    animation: LandingText 2s ease-in-out;
+    margin: 10px 30px 10px 30px;
+}
+
+/* Utils */
+.c-job-info-section {
+    padding: 5px;
+    margin-top: 3px;
+}
+
+.c-job-react {
+    width: 250px;
+
+}
+
 .btn-success {
     background: #50ef9e !important;
     border: none !important;
 }
 
+.c-link {
+    text-decoration: none;
+    color: var(--co-text);
+    padding: 2px;
+}
+
+/* Media screens */
 @media screen and (max-width: 990px) {
     .nav-item {
         margin-left: 10px;

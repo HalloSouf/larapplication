@@ -15,9 +15,8 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $roles = array(
-            array('name' => 'user', 'permission' => 6),
-            array('name' => 'staff', 'permission' => 7),
-            array('name' => 'admin', 'permission' => 8)
+            array('name' => 'user'),
+            array('name' => 'admin')
         );
 
         DB::table('roles')->insert($roles);
