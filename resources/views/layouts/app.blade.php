@@ -51,9 +51,11 @@
                                     Mijn account
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li>
-                                        <a class="dropdown-item" href="{{ url('/admin/jobs') }}">Admin</a>
-                                    </li>
+                                    @if (\Illuminate\Support\Facades\Auth::user()->role >= 2)
+                                        <li>
+                                            <a class="dropdown-item" href="{{ url('/admin/jobs') }}">Admin</a>
+                                        </li>
+                                    @endif
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Uitloggen</a>
                                     </li>

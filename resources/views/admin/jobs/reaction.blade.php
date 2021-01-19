@@ -19,13 +19,19 @@
                                 <h5>Name</h5>
                                 <p>{{ \App\Models\User::find($reaction->user) ?  \App\Models\User::find($reaction->user)->firstname . ' ' . \App\Models\User::find($reaction->user)->lastname : 'Onbekend' }}</p>
                             </div>
+                            @foreach ($respond as $res)
+                                <div class="c-job-info-section">
+                                    <h5>{{ $res['question'] }}</h5>
+                                    <p>{{ $res['answer'] }}</p>
+                                </div>
+                            @endforeach
                             <div class="c-job-info-section">
                                 <h5>Datum</h5>
                                 <p>{{ $reaction->created_at }}</p>
                             </div>
                             <div class="c-job-info-section">
                                 <h5>Toevoeging</h5>
-                                <p>{{ $reaction->extra }}</p>
+                                <p>{{ $reaction->extra ? $reaction->extra : 'Geen toevoeging' }}</p>
                             </div>
                             <div class="c-job-info-section">
                                 <form method="POST" action="{{ url('/admin/jobs/reactions/delete/' . $reaction->id) }}">

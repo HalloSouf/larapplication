@@ -103,6 +103,17 @@ body {
     padding: 2px;
 }
 
+.c-qinput-fade-in {
+    animation-name: InputFadeIn;
+    animation-duration: 0.5s;
+}
+
+/* Keyframes */
+@keyframes InputFadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
 /* Media screens */
 @media screen and (max-width: 990px) {
     .nav-item {

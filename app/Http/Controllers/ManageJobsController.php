@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,6 +51,8 @@ class ManageJobsController extends Controller
            'jobreq' => ['required', 'string']
         ]);
 
+        $cquestions = array_slice($request->all(), 4);
+
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator);
         } else {
@@ -59,6 +62,13 @@ class ManageJobsController extends Controller
             $job->requirements = strval($request->jobreq);
             $job->enabled = 1;
             $job->save();
+
+            foreach ($cquestions as $cquestion) {
+                DB::table('job_questions')->insert([
+                    'job' => $job->id,
+                    'question' => $cquestion
+                ]);
+            }
 
             return Redirect::back()->with('success', 'Vacature is succesvol aangemaakt!');
         }
@@ -126,6 +136,7 @@ class ManageJobsController extends Controller
     public function destroy(int $id): RedirectResponse
     {
         JobModel::destroy($id);
+        DB::table('job_questions')->where('job', $id)->delete();
         return Redirect::back()->with('success', 'Vacature is succesvol verwijderd!');
     }
 }

@@ -54,6 +54,19 @@
                             </div>
 
                             <div class="form-group">
+                                <div id="jobquestions">
+                                    <div id="jobquestion1">
+                                        <label class="c-form-label" for="jobq1">Vraag 1</label>
+                                        <input class="form-control" id="jobq1" type="text" name="jobq1" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <a class="link-success" style="text-decoration: none" onclick="addQuestion()"><i class="fas fa-plus"></i> Toevoegen</a>
+                                    <a class="link-danger" style="text-decoration: none; margin-left: 10px;" onclick="removeQuestion()"><i class="fas fa-trash-alt"></i> Verwijderen</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <div class="col">
                                     <button style="width:100%" type="submit" class="btn btn-primary">Maak aan</button>
                                 </div>
@@ -79,7 +92,7 @@
                             @else
                                 @foreach($jobs as $job)
                                     <li class="list-group-item">
-                                        <h5><a class="c-link text-dark" href="{{ url('/admin/jobs/' . $job->id) }}">{{ $job->title }}</a></h5>
+                                        <h5>{{ $job->title }}</h5>
                                         <div>
                                             <a class="c-link" href="{{ url('/admin/jobs/delete/' . $job->id) }}" onclick="event.preventDefault(); document.getElementById('{{ 'removejob' . $job->id }}').submit();"><i class="far fa-trash-alt"></i> Verwijderen</a>
                                             <a class="ms-2 c-link" href="{{ url('/admin/jobs/edit/' . $job->id) }}"><i class="far fa-keyboard"></i> Bewerken</a>

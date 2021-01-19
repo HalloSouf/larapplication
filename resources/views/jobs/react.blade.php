@@ -23,6 +23,15 @@
                                     <p>{{ $job->title }}</p>
                                 </div>
 
+                                @foreach($questions as $question)
+                                    <div class="c-job-info-section">
+                                        <label for="jobanswer{{$question->id}}">
+                                            <h5>{{ $question->question }}</h5>
+                                        </label>
+                                        <input class="form-control" id="jobanswer{{$question->id}}" name="jobanswer{{$question->id}}">
+                                    </div>
+                                @endforeach
+
                                 <div class="c-job-info-section">
                                     <label for="jobaddon">
                                         <h5>Extra toevoeging</h5>

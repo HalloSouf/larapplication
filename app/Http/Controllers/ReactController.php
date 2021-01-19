@@ -51,15 +51,27 @@ class ReactController extends Controller
             'user' => Auth::id(),
             'job' => $request->jobid
         ])->get();
+
         if (count($existed_row) >= 1) return Redirect::to('/jobs')->with('error', 'Je hebt al op deze vacature gereageerd!');
 
-        DB::table('job_reactions')->insert([
+        $questionresponds = array_slice($request->all(), 2);
+        array_pop($questionresponds);
+
+        $reactionid = DB::table('job_reactions')->insertGetId([
             'user' => Auth::id(),
             'job' => $request->jobid,
             'extra' => $request->jobaddon,
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
         ]);
+
+        foreach ($questionresponds as $keyq => $qrespond) {
+            DB::table('questions_reactions')->insert([
+               'reaction' => $reactionid,
+               'question' => explode('answer', $keyq)[1],
+                'answer' => $qrespond
+            ]);
+        }
 
         return Redirect::to('/jobs')->with('success', 'Je antwoord op deze vacature is succesvol verstuurd!');
     }
@@ -73,7 +85,8 @@ class ReactController extends Controller
     public function show(int $id)
     {
         return view('jobs.react', [
-           'job' => JobModel::find($id)
+            'job' => JobModel::find($id),
+            'questions' => DB::table('job_questions')->where('job', $id)->get()
         ]);
     }
 
@@ -85,8 +98,17 @@ class ReactController extends Controller
      */
     public function edit(int $id)
     {
+        $qanswers = DB::table('questions_reactions')->where('reaction', $id)->get();
+        $emptyarray = array();
+        foreach ($qanswers as $qanswer) {
+            array_push($emptyarray, array(
+                'question' => DB::table('job_questions')->where('id', $qanswer->question)->get()->first()->question,
+                'answer' => $qanswer->answer
+            ));
+        }
         return \view('admin.jobs.reaction', [
-            'reaction' => DB::table('job_reactions')->where('id', $id)->get()->first()
+            'reaction' => DB::table('job_reactions')->where('id', $id)->get()->first(),
+            'respond' => $emptyarray
         ]);
     }
 
@@ -111,6 +133,7 @@ class ReactController extends Controller
     public function destroy(int $id): RedirectResponse
     {
         DB::table('job_reactions')->delete($id);
-        return Redirect::to('/admin/jobs/reaction')->with('success', 'Reactie op vacature is verwijderd!');
+        DB::table('questions_reactions')->where('reaction', $id)->delete();
+        return Redirect::to('/admin/jobs/reactions')->with('success', 'Reactie op vacature is verwijderd!');
     }
 }
