@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --co-background: #f6fbfd;
+    --co-white: #ffffff;
+    --co-text: #7e999f;
+    --co-green: #50ef9e;
+    --co-primary: #5885a3;
+}
+
+/* General */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--co-background) !important;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--co-white);
+}
+
+.navbar-brand, .navbar-brand:hover {
+    color: var(--co-text);
+    font-weight: bold;
+}
+
+.navbar-toggler > i {
+    color: var(--co-text);
+}
+
+.nav-link {
+    color: var(--co-text);
+}
+
+.nav-link:hover {
+    color: #627e85;
+}
+
+.dropdown-item {
+    color: var(--co-text) !important;
+}
+
+/* Vac */
+.c-vac-collapse-link, .c-vac-collapse-link:hover {
+    text-decoration: none;
+    color: var(--co-text);
+    font-size: 18px;
+}
+
+/* Login form */
+.c-login-form-group {
+    padding: 10px;
+}
+
+.c-login-label {
+    padding: 3px;
+    color: var(--co-text);
+}
+
+/* Vacs form */
+.c-vacs-form-group {
+    padding: 10px;
+}
+
+.c-vacs-label {
+    padding: 3px;
+    color: var(--co-text);
+}
+
+/* Vacatures cards */
+.c-vacs-card {
+    border-radius: 7px !important;
+}
+
+.c-vacs-label {
+    background: var(--co-primary);
+    display: inline;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.c-vacs-lgroups > li {
+    border: none !important;
+}
+
+.c-vacs-links {
+    text-decoration: none;
+    color: var(--co-primary);
+}
+
+.c-vacs-badge {
+    background: var(--co-primary) !important;
+}
+
+/* Header */
+.c-header {
+    height: 100vh;
+    min-height: 500px;
+    background-image: linear-gradient(147deg, #22577a 0%, #5885a3 74%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#smooth-header {
+    animation: LandingText 1.5s ease-in-out;
+}
+
+.c-header-title {
+    color: #ffffff;
+}
+
+.c-header-description {
+    margin: 10px 50px 10px 50px;
+}
+
+/* Utils */
+.btn-success {
+    background: #50ef9e !important;
+    border: none !important;
+}
+
+/* Keyframes */
+@keyframes LandingText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
