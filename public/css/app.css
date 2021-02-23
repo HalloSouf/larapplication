@@ -63,6 +63,10 @@ body {
     color: var(--co-text);
 }
 
+.c-login-card {
+    min-width: 700px !important;
+}
+
 /* Vacs form */
 .c-vacs-form-group {
     padding: 10px;

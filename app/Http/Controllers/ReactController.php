@@ -53,7 +53,7 @@ class ReactController extends Controller
 
         foreach ($questionresponds as $key => $qrespond) {
             $reaction = new Reactions();
-            $reaction->reaction = $id;
+            $reaction->reaction = $reactionid;
             $reaction->question = explode('joba', $key)[1];
             $reaction->answer = $qrespond;
             $reaction->save();

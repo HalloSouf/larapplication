@@ -32,7 +32,7 @@
                     <div class="col-8 text-center">
                         <h1 class="c-header-title">Bekijk hier onze vacatures, en wie weet heb jij binnenkort een baan!</h1>
                         <div class="p-3">
-                            <a class="btn btn-primary w-50 p-3" href="{{ url('/jobs') }}" role="button">Bekijk vacatures <i class="fas fa-arrow-right mx-3"></i></a>
+                            <a class="btn btn-primary w-100 p-3" href="{{ url('/jobs') }}" role="button">Bekijk vacatures <i class="fas fa-arrow-right mx-3"></i></a>
                         </div>
                     </div>
                 </div>

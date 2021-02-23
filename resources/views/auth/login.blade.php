@@ -9,7 +9,7 @@
         </div>
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
-                <div class="card shadow-sm" style="min-width: 700px;">
+                <div class="card shadow-sm w-100">
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
