@@ -6,6 +6,7 @@ use App\Http\Controllers\ManageAdminController;
 use App\Http\Controllers\ManageJobController;
 use App\Http\Controllers\ManageUserController;
 use App\Http\Controllers\ReactController;
+use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +31,15 @@ Route::get('/jobs/react/{id}', [ReactController::class, 'show']);
 Route::post('/jobs/react/{id}', [ReactController::class, 'store'])->middleware(['auth']);
 
 Route::prefix('/admin')->middleware(['auth', 'Administrator'])->group(function() {
+    Route::get('/archive', [ReactController::class, 'archive']);
+    Route::get('/stats', [StatsController::class, 'index']);
+
     Route::get('/', [ReactController::class, 'index']);
+
     Route::get('/reactions/{id}', [ReactController::class, 'edit']);
     Route::post('/reactions/delete/{id}', [ReactController::class, 'destroy']);
+    Route::post('/reactions/approve/{id}', [ReactController::class, 'approve']);
+    Route::post('/reactions/decline/{id}', [ReactController::class, 'decline']);
 
     Route::get('/users', [ManageUserController::class, 'index']);
     Route::post('/users/delete/{id}', [ManageUserController::class, 'destroy']);

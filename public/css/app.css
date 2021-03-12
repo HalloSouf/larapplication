@@ -89,6 +89,14 @@ body {
     border-bottom-right-radius: 15px;
 }
 
+.c-vacs-green {
+    background: #50ef9e !important;
+}
+
+.c-vacs-red {
+    background: #ff8b87 !important;
+}
+
 .c-vacs-lgroups > li {
     border: none !important;
 }
@@ -127,6 +135,16 @@ body {
 /* Utils */
 .btn-success {
     background: #50ef9e !important;
+    border: none !important;
+}
+
+.btn-danger {
+    background: #ff8b87 !important;
+    border: none !important;
+}
+
+.btn-warning {
+    background: #ffe6a1 !important;
     border: none !important;
 }
 

@@ -39,10 +39,22 @@
                             <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/admin') }}">Reacties</a>
+                            <a class="nav-link" href="{{ url('/admin/stats') }}">Statistieken</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Reacties
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="{{ url('/admin') }}">Overzicht</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ url('/admin/archive') }}">Archief</a>
+                                </li>
+                            </ul>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/admin/users') }}">Gebruikers</a>
+                             <a class="nav-link" href="{{ url('/admin/users') }}">Gebruikers</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

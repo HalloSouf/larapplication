@@ -17,6 +17,7 @@ class CreateJobReactionsTable extends Migration
             $table->id();
             $table->integer('job');
             $table->integer('user');
+            $table->boolean('passed')->nullable();
             $table->timestamps();
         });
     }

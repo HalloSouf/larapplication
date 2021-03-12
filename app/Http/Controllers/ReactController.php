@@ -26,7 +26,7 @@ class ReactController extends Controller
     public function index()
     {
         return \view('admin.reactions.index', [
-            'reactions' => DB::table('job_reactions')->get()
+            'reactions' => DB::table('job_reactions')->where(['passed' => null])->get()
         ]);
     }
 
@@ -111,12 +111,48 @@ class ReactController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return Application|Factory|View|Response
+     * @return RedirectResponse
      */
-    public function destroy(int $id)
+    public function destroy(int $id): RedirectResponse
     {
         DB::table('job_reactions')->where(['id' => $id])->delete();
         DB::table('reactions')->where(['reaction' => $id])->delete();
-        return \view('admin.reactions.index')->with('success', 'Reactie is verwijderd!');
+        return Redirect::to('/admin')->with('success', 'Reactie is verwijderd!');
+    }
+
+    /**
+     * Approve reaction
+     *
+     * @param int $id
+     * @return RedirectResponse
+     */
+    public function approve(int $id): RedirectResponse
+    {
+        DB::table('job_reactions')->where(['id' => $id])->update(['passed' => true]);
+        return Redirect::back()->with('success', 'Reactie is geaccepteerd!');
+    }
+
+    /**
+     * Decline reaction
+     *
+     * @param int $id
+     * @return RedirectResponse
+     */
+    public function decline(int $id): RedirectResponse
+    {
+        DB::table('job_reactions')->where(['id' => $id])->update(['passed' => false]);
+        return Redirect::back()->with('error', 'Reactie is geweigerd!');
+    }
+
+    /**
+     * Archive
+     *
+     * @return Application|Factory|View
+     */
+    public function archive()
+    {
+        return \view('admin.reactions.archive', [
+            'reactions' => DB::table('job_reactions')->where(['passed' => 1])->orWhere(['passed' => 0])->get()
+        ]);
     }
 }

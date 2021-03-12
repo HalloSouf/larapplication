@@ -8,7 +8,7 @@
             @if (count($reactions) < 1)
                 <div class="container text-center mt-5">
                     <div class="col-12">
-                        <h3>Er zijn jammer geen nieuwe reacties beschikbaar...</h3>
+                        <h3>Er zijn geen gearchieveerde reacties beschikbaar...</h3>
                     </div>
                 </div>
             @else
@@ -16,7 +16,7 @@
                     <div class="col-lg-6">
                         <div class="card shadow-sm c-vacs-card">
                             <div class="mt-4">
-                                <div class="pt-2 p-2 c-vacs-label"><span class="mx-3 text-white">Reactie</span></div>
+                                <div class="pt-2 p-2 c-vacs-label {{ $reaction->passed === 1 ? 'c-vacs-green' : 'c-vacs-red' }}"><span class="mx-3 text-white">{{ $reaction->passed === 1 ? 'Geaccepteerd' : 'Geweigerd' }}</span></div>
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title p-2 mt-2">{{ \App\Models\Jobs::find($reaction->job)->title }}</h4>
