@@ -25,81 +25,85 @@
     </head>
     <body>
 
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg shadow-sm">
-            <div class="container">
-                <div class="d-flex">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('images/starnode.png') }}" alt="logo" class="nav-logo d-inline-block mx-1"/>
-                        {{ config('app.name', 'Larapplication') }}
-                    </a>
-                    <button class="justify-content-end navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="far fa-compass"></i>
-                    </button>
-                </div>
+        <div id="page-container">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg shadow-sm">
+                <div class="container">
+                    <div class="d-flex">
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            <img src="{{ asset('images/starnode.png') }}" alt="logo" class="nav-logo d-inline-block mx-1"/>
+                            {{ config('app.name', 'Larapplication') }}
+                        </a>
+                        <button class="justify-content-end navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="far fa-compass"></i>
+                        </button>
+                    </div>
 
-                <div class="collapse justify-content-end navbar-collapse" id="navbarContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/jobs') }}">Vacatures</a>
-                        </li>
-                        @if (\Illuminate\Support\Facades\Auth::check() == false)
+                    <div class="collapse justify-content-end navbar-collapse" id="navbarContent">
+                        <ul class="navbar-nav mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                <a class="nav-link" href="{{ url('/') }}">Home</a>
                             </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Mijn account
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @if (\Illuminate\Support\Facades\Auth::user()->role > 1)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/jobs') }}">Vacatures</a>
+                            </li>
+                            @if (\Illuminate\Support\Facades\Auth::check() == false)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                </li>
+                            @else
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Mijn account
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        @if (\Illuminate\Support\Facades\Auth::user()->role > 1)
+                                            <li>
+                                                <a class="dropdown-item" href="{{ url('/admin') }}">Admin</a>
+                                            </li>
+                                        @endif
                                         <li>
-                                            <a class="dropdown-item" href="{{ url('/admin') }}">Admin</a>
+                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Uitloggen</a>
                                         </li>
-                                    @endif
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Uitloggen</a>
-                                    </li>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
                                             @csrf
                                         </form>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
+                                    </ul>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
+            </nav>
+
+            <div id="main">
+                @yield('content')
             </div>
-        </nav>
 
-        @yield('content')
-
-        <div class="footer p-3 bg-white shadow-lg">
-            <div class="container">
-                <div class="row row align-items-center">
-                    <div class="col-md-6">
-                        <a href="https://discord.starnode.nl" target="_blank">
-                            <img src="https://discord.com/assets/e4923594e694a21542a489471ecffa50.svg" alt="Discord logo" style="width: 30%">
-                        </a>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-12">
-                                <span class="fw-bold">KVK: </span> Geen
-                            </div>
+            <div class="footer p-3 bg-white shadow-lg">
+                <div class="container">
+                    <div class="row row align-items-center">
+                        <div class="col-md-6">
+                            <a href="https://discord.starnode.nl" target="_blank">
+                                <img src="https://discord.com/assets/e4923594e694a21542a489471ecffa50.svg" alt="Discord logo" style="width: 30%">
+                            </a>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <span class="fw-bold">BTW: </span> Geen
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-12">
+                                    <span class="fw-bold">KVK: </span> Geen
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <span class="fw-bold">BTW: </span> Geen
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <span class="fw-bold">&#169; StarNode</span>
+                    <div class="row">
+                        <span class="fw-bold">&#169; StarNode</span>
+                    </div>
                 </div>
             </div>
         </div>
