@@ -20,9 +20,21 @@ body {
     background: var(--co-background) !important;
 }
 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
 /* Navbar */
 .navbar {
     background: var(--co-white);
+}
+
+.nav-logo {
+    width: 5%;
 }
 
 .navbar-brand, .navbar-brand:hover {
@@ -146,6 +158,12 @@ body {
 .btn-warning {
     background: #ffe6a1 !important;
     border: none !important;
+}
+
+@media only screen and (max-width: 465px) {
+    .nav-logo {
+        display: none !important;
+    }
 }
 
 /* Keyframes */

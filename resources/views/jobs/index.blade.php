@@ -13,7 +13,7 @@
                 </div>
             @else
                 @foreach($jobs as $job)
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="card shadow-sm c-vacs-card">
                             <div class="mt-4">
                                 <div class="pt-2 p-2 c-vacs-label"><span class="mx-3 text-white">Vacature</span></div>

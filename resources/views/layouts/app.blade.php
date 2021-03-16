@@ -28,10 +28,15 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Larapplication') }}</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="far fa-compass"></i>
-                </button>
+                <div class="d-flex">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{ asset('images/starnode.png') }}" alt="logo" class="nav-logo d-inline-block mx-1"/>
+                        {{ config('app.name', 'Larapplication') }}
+                    </a>
+                    <button class="justify-content-end navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="far fa-compass"></i>
+                    </button>
+                </div>
 
                 <div class="collapse justify-content-end navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
@@ -71,6 +76,33 @@
         </nav>
 
         @yield('content')
+
+        <div class="footer p-3 bg-white shadow-lg">
+            <div class="container">
+                <div class="row row align-items-center">
+                    <div class="col-md-6">
+                        <a href="https://discord.starnode.nl" target="_blank">
+                            <img src="https://discord.com/assets/e4923594e694a21542a489471ecffa50.svg" alt="Discord logo" style="width: 30%">
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <span class="fw-bold">KVK: </span> Geen
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <span class="fw-bold">BTW: </span> Geen
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="fw-bold">&#169; StarNode</span>
+                </div>
+            </div>
+        </div>
 
     </body>
 </html>
