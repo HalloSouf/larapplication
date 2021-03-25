@@ -107,7 +107,7 @@
                     <div class="row row align-items-center">
                         <div class="col-md-6">
                             <a href="https://discord.starnode.nl" target="_blank">
-                                <img src="https://discord.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg" alt="Discord logo" style="width: 10%">
+                                <img src="https://discord.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg" alt="Discord logo" style="width: 5%">
                             </a>
                         </div>
                         <div class="col-md-6">
