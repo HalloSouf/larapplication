@@ -6,6 +6,7 @@
     --co-text: #7e999f;
     --co-green: #50ef9e;
     --co-primary: #5885a3;
+    --co-black: #2b2b2b;
 }
 
 /* General */
@@ -49,12 +50,12 @@ body {
 }
 
 .navbar-brand, .navbar-brand:hover {
-    color: var(--co-text);
+    color: var(--co-black);
     font-weight: bold;
 }
 
 .navbar-toggler > i {
-    color: var(--co-text);
+    color: var(--co-black);
 }
 
 .nav-link {

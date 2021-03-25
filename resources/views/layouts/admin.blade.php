@@ -32,10 +32,10 @@
                     <div class="d-flex">
                         <a class="navbar-brand" href="{{ url('/') }}">
                             <img src="{{ asset('images/starnode.png') }}" alt="logo" class="nav-logo d-inline-block mx-1"/>
-                            {{ config('app.name', 'Larapplication') }}
+                            StarNode
                         </a>
                         <button class="justify-content-end navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="far fa-compass"></i>
+                            <i class="fas fa-bars"></i>
                         </button>
                     </div>
 
@@ -102,23 +102,18 @@
                 @yield('content')
             </div>
 
-            <div class="footer mt-5 p-3 bg-white shadow-lg">
+            <div class="footer p-3 bg-white shadow-lg">
                 <div class="container">
                     <div class="row row align-items-center">
                         <div class="col-md-6">
                             <a href="https://discord.starnode.nl" target="_blank">
-                                <img src="https://discord.com/assets/e4923594e694a21542a489471ecffa50.svg" alt="Discord logo" style="width: 30%">
+                                <img src="https://discord.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg" alt="Discord logo" style="width: 10%">
                             </a>
                         </div>
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-12">
-                                    <span class="fw-bold">KVK: </span> Geen
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <span class="fw-bold">BTW: </span> Geen
+                                    <p><span class="mx-2 fw-bold">KVK: </span> {{ env('KVK') }} <span class="mx-2 fw-bold">BTW: </span> {{ env('BTW') }}</p>
                                 </div>
                             </div>
                         </div>
