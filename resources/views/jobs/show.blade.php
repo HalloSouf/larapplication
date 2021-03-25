@@ -28,7 +28,7 @@
                                                     <dt class="col-sm-6">Uren per week</dt>
                                                     <dd class="col-sm-6">{{ $job->hours }}</dd>
                                                     <dt class="col-sm-6">Maandsalaris</dt>
-                                                    <dd class="col-sm-6">{{ $job->salary }}</dd>
+                                                    <dd class="col-sm-6">€ {{ $job->salary }}</dd>
                                                 </dl>
                                             </div>
                                             <div class="col-md-6">
